@@ -215,8 +215,8 @@ function MBTITest({ onBack }: { onBack: () => void }) {
       volume: 0.35,
       onload: () => console.log("click sound loaded"),
       onplay: () => console.log("click sound played"),
-      onloaderror: (id: string, err: any) => console.error("click sound load error", err),
-      onplayerror: (id: string, err: any) => console.error("click sound play error", err),
+      onloaderror: (_: string, err: any) => console.error("click sound load error", err),
+      onplayerror: (_: string, err: any) => console.error("click sound play error", err),
     }
   );
   const [playSuccess] = useSound(["/success.mp3", "/success.wav"], { volume: 0.45 });
