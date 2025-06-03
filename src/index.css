@@ -1,0 +1,211 @@
+:root {
+  background-color: #181818;
+  color: rgba(255, 255, 255, 0.87);
+  color-scheme: light dark;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  font-weight: 400;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: #f8f8f8;
+    color: #181818;
+  }
+}
+
+.mbti-app-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+  transition: background 0.6s;
+}
+
+.mbti-glass {
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px) saturate(1.2);
+  box-shadow: 0 8px 32px 0 rgba(80, 60, 120, 0.18), 0 1.5px 8px #fff2 inset;
+}
+
+.mbti-main-btn {
+  background: linear-gradient(90deg, #f7971e 0%, #a777e3 100%);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 14px 36px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px #a777e344;
+  margin-top: 18px;
+}
+
+.mbti-welcome {
+  padding: 56px 36px 36px 36px;
+  max-width: 440px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(80, 60, 120, 0.18);
+  text-align: center;
+}
+
+.mbti-title {
+  font-size: 2.7rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 0 2px 12px #a777e3cc;
+}
+
+.mbti-desc {
+  font-size: 1.18rem;
+  color: #f3eaff;
+  margin-bottom: 38px;
+  font-weight: 500;
+}
+
+.mbti-test-card {
+  padding: 48px 28px 36px 28px;
+  max-width: 440px;
+  min-height: 380px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(80, 60, 120, 0.18);
+  text-align: center;
+  position: relative;
+}
+
+.mbti-back {
+  left: 24px;
+  top: 24px;
+  font-size: 1.15rem;
+  color: #fff;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.mbti-back:hover {
+  opacity: 1;
+}
+
+.mbti-question {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.mbti-options {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.mbti-option-btn {
+  width: 100%;
+  font-size: 1.08rem;
+  background: linear-gradient(90deg, #a777e3 0%, #6e8efb 100%);
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 12px 0;
+  box-shadow: 0 2px 8px #a777e344;
+}
+
+.mbti-progress {
+  color: #f3eaff;
+  font-size: 1.02rem;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.mbti-step-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+.mbti-prev-btn {
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  font-size: 1rem;
+  padding: 8px 22px;
+  border-radius: 999px;
+  margin-left: 8px;
+}
+
+.mbti-result {
+  text-align: center;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mbti-type {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 18px 0 8px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px #fff6;
+}
+
+.mbti-type-desc {
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: 24px;
+  font-weight: 500;
+  text-shadow: 0 1px 6px #fff3;
+}
+
+.mbti-answers-hint {
+  margin-top: 18px;
+  color: #fff;
+  font-size: 0.98rem;
+  opacity: 0.7;
+}
+
+.mbti-connect-info {
+  margin-top: 12px;
+  color: #fff;
+  font-size: 1.02rem;
+}
+
+.mbti-sign-btn {
+  margin-top: 8px;
+}
+
+.mbti-signature, .mbti-signature-error {
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: #fff;
+  word-break: break-all;
+}
+.mbti-signature-error {
+  color: #ffb3b3;
+}
+
+@media (max-width: 600px) {
+  .mbti-welcome, .mbti-test-card {
+    padding: 24px 6vw 18px 6vw;
+    max-width: 98vw;
+  }
+  .mbti-title {
+    font-size: 2rem;
+  }
+  .mbti-type {
+    font-size: 1.6rem;
+  }
+}
