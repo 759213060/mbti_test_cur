@@ -194,7 +194,7 @@ function App() {
               开始测试
             </motion.button>
             <div style={{ marginTop: 32 }}>
-              <ConnectMenu />
+      <ConnectMenu />
             </div>
           </motion.div>
         )}
@@ -209,8 +209,17 @@ function MBTITest({ onBack }: { onBack: () => void }) {
   const [answers, setAnswers] = useState<string[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [direction, setDirection] = useState(1); // 1: next, -1: prev
-  const [playClick] = useSound("/click.mp3", { volume: 0.35 });
-  const [playSuccess] = useSound("/success.mp3", { volume: 0.45 });
+  const [playClick] = useSound(
+    ["/click.mp3", "/click.wav"],
+    {
+      volume: 0.35,
+      onload: () => console.log("click sound loaded"),
+      onplay: () => console.log("click sound played"),
+      onloaderror: (id: string, err: any) => console.error("click sound load error", err),
+      onplayerror: (id: string, err: any) => console.error("click sound play error", err),
+    }
+  );
+  const [playSuccess] = useSound(["/success.mp3", "/success.wav"], { volume: 0.45 });
 
   const handleAnswer = (value: string) => {
     playClick();
@@ -252,6 +261,8 @@ function MBTITest({ onBack }: { onBack: () => void }) {
     const type = [E >= I ? "E" : "I", S >= N ? "S" : "N", T >= F ? "T" : "F", J >= P ? "J" : "P"].join("");
     return type;
   };
+
+  if (!mbtiQuestions[step]) return <div style={{color:'#fff',textAlign:'center',padding:'48px 0'}}>题目加载出错，请刷新页面</div>;
 
   return (
     <motion.div
@@ -344,7 +355,6 @@ function MBTIResult({ type, onBack, answers }: { type: string; onBack: () => voi
 function ConnectMenu() {
   const { isConnected, address } = useAccount();
   const { connect, connectors } = useConnect();
-  const [playClick] = useSound("/click.mp3", { volume: 0.35 });
 
   if (isConnected) {
     return (
@@ -359,7 +369,7 @@ function ConnectMenu() {
   return (
     <motion.button
       type="button"
-      onClick={() => { playClick(); connect({ connector: connectors[0] }); }}
+      onClick={() => { connect({ connector: connectors[0] }); }}
       className="mbti-btn mbti-main-btn"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -371,13 +381,12 @@ function ConnectMenu() {
 
 function SignButton() {
   const { signMessage, isPending, data, error } = useSignMessage();
-  const [playClick] = useSound("/click.mp3", { volume: 0.35 });
 
   return (
     <div style={{ marginTop: 8 }}>
       <motion.button
         type="button"
-        onClick={() => { playClick(); signMessage({ message: "hello world" }); }}
+        onClick={() => { signMessage({ message: "hello world" }); }}
         disabled={isPending}
         className="mbti-btn mbti-sign-btn"
         whileTap={{ scale: 0.95 }}
